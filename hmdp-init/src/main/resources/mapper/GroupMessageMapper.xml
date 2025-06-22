@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hmdp.mapper.MessageMapper">
+
+    <insert id="insertGroupMessage" >
+        INSERT INTO tb_chat (shop_id, user_id, content, create_time)
+        VALUES (#{shopId}, #{userId}, #{content}, NOW())
+    </insert>
+
+    <select id="getGroupMessages" resultType="com.hmdp.entity.ChatMessage" >
+            SELECT *
+            FROM tb_chat d
+            WHERE d.shop_id = #{shopId}
+            LIMIT #{limit}
+     </select>
+
+</mapper>
